@@ -1,0 +1,19 @@
+{
+  "name": "storeWithreplaceOnPUTfalse",
+  "plural": "stores2",
+  "properties": {},
+  "scopes": {
+    "superStores": {
+      "where": {
+        "size": "super"
+      }
+    }
+  },
+  "relations": {
+    "widgets": {
+      "model": "widget",
+      "type": "hasMany"
+    }
+  },
+  "replaceOnPUT": false
+}

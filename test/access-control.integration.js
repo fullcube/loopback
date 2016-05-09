@@ -111,7 +111,13 @@ describe('access control - integration', function() {
           assert.equal(user.password, undefined);
         });
       });
+
+      // user has replaceOnPUT = false; so then both PUT and PATCH should be allowed for update
       lt.describe.whenCalledRemotely('PUT', '/api/users/:id', function() {
+        lt.it.shouldBeAllowed();
+      });
+
+      lt.describe.whenCalledRemotely('PATCH', '/api/users/:id', function() {
         lt.it.shouldBeAllowed();
       });
     });
@@ -163,7 +169,7 @@ describe('access control - integration', function() {
     }
   });
 
-  describe('/accounts', function() {
+  describe('/accounts with replaceOnPUT true', function() {
     var count = 0;
     before(function() {
       var roleModel = loopback.getModelByType(loopback.Role);
@@ -177,7 +183,7 @@ describe('access control - integration', function() {
       });
     });
 
-    lt.beforeEach.givenModel('account');
+    lt.beforeEach.givenModel('accountWithReplaceOnPUTtrue');
 
     lt.it.shouldBeDeniedWhenCalledAnonymously('GET', '/api/accounts');
     lt.it.shouldBeDeniedWhenCalledUnauthenticated('GET', '/api/accounts');
@@ -195,12 +201,15 @@ describe('access control - integration', function() {
     lt.it.shouldBeDeniedWhenCalledUnauthenticated('PUT', urlForAccount);
     lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'PUT', urlForAccount);
 
+    lt.it.shouldBeDeniedWhenCalledAnonymously('PATCH', urlForAccount);
+    lt.it.shouldBeDeniedWhenCalledUnauthenticated('PATCH', urlForAccount);
+    lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'PATCH', urlForAccount);
+
     lt.describe.whenLoggedInAsUser(CURRENT_USER, function() {
       beforeEach(function(done) {
         var self = this;
-
         // Create an account under the given user
-        app.models.account.create({
+        app.models.accountWithReplaceOnPUTtrue.create({
           userId: self.user.id,
           balance: 100,
         }, function(err, act) {
@@ -210,6 +219,9 @@ describe('access control - integration', function() {
         });
       });
 
+      lt.describe.whenCalledRemotely('PATCH', '/api/accounts/:id', function() {
+        lt.it.shouldBeAllowed();
+      });
       lt.describe.whenCalledRemotely('PUT', '/api/accounts/:id', function() {
         lt.it.shouldBeAllowed();
       });
@@ -226,7 +238,101 @@ describe('access control - integration', function() {
     lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'DELETE', urlForAccount);
 
     function urlForAccount() {
-      return '/api/accounts/' + this.account.id;
+      return '/api/accounts/' + this.accountWithReplaceOnPUTtrue.id;
+    }
+  });
+
+  describe('/accounts with replaceOnPUT false', function() {
+    var count = 0;
+    before(function() {
+      var roleModel = loopback.getModelByType(loopback.Role);
+      roleModel.registerResolver('$dummy', function(role, context, callback) {
+        process.nextTick(function() {
+          if (context.remotingContext) {
+            count++;
+          }
+          callback && callback(null, false); // Always true
+        });
+      });
+    });
+
+    lt.beforeEach.givenModel('accountWithReplaceOnPUTfalse');
+
+    lt.it.shouldBeDeniedWhenCalledAnonymously('GET', '/api/accounts2');
+    lt.it.shouldBeDeniedWhenCalledUnauthenticated('GET', '/api/accounts2');
+    lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'GET', '/api/accounts2');
+
+    lt.it.shouldBeDeniedWhenCalledAnonymously('GET', urlForAccount);
+    lt.it.shouldBeDeniedWhenCalledUnauthenticated('GET', urlForAccount);
+    lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'GET', urlForAccount);
+
+    lt.it.shouldBeDeniedWhenCalledAnonymously('POST', '/api/accounts2');
+    lt.it.shouldBeDeniedWhenCalledUnauthenticated('POST', '/api/accounts2');
+    lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'POST', '/api/accounts2');
+
+    lt.it.shouldBeDeniedWhenCalledAnonymously('POST', urlForReplaceAccountPOST);
+    lt.it.shouldBeDeniedWhenCalledUnauthenticated('POST', urlForReplaceAccountPOST);
+    lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'POST', urlForReplaceAccountPOST);
+
+    lt.it.shouldBeDeniedWhenCalledAnonymously('PATCH', urlForAccount);
+    lt.it.shouldBeDeniedWhenCalledUnauthenticated('PATCH', urlForAccount);
+    lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'PATCH', urlForAccount);
+
+    lt.describe.whenLoggedInAsUser(CURRENT_USER, function() {
+      beforeEach(function(done) {
+        var self = this;
+        // Create an account under the given user
+        app.models.accountWithReplaceOnPUTfalse.create({
+          userId: self.user.id,
+          balance: 100,
+        }, function(err, act) {
+          self.url = '/api/accounts2/' + act.id;
+
+          done();
+        });
+      });
+
+      lt.describe.whenCalledRemotely('PATCH', '/api/accounts2/:id', function() {
+        lt.it.shouldBeAllowed();
+      });
+
+      lt.describe.whenCalledRemotely('PUT', '/api/accounts2/:id', function() {
+        lt.it.shouldBeAllowed();
+      });
+      lt.describe.whenCalledRemotely('GET', '/api/accounts2/:id', function() {
+        lt.it.shouldBeAllowed();
+      });
+      lt.describe.whenCalledRemotely('DELETE', '/api/accounts2/:id', function() {
+        lt.it.shouldBeDenied();
+      });
+
+      describe('replace on POST verb', function() {
+        beforeEach(function(done) {
+          var self = this;
+          // Create an account under the given user
+          app.models.accountWithReplaceOnPUTfalse.create({
+            userId: self.user.id,
+            balance: 100,
+          }, function(err, act) {
+            self.url = '/api/accounts2/' + act.id + '/replace';
+            done();
+          });
+        });
+        lt.describe.whenCalledRemotely('POST', '/api/accounts2/:id/replace', function() {
+          lt.it.shouldBeAllowed();
+        });
+      });
+    });
+
+    lt.it.shouldBeDeniedWhenCalledAnonymously('DELETE', urlForAccount);
+    lt.it.shouldBeDeniedWhenCalledUnauthenticated('DELETE', urlForAccount);
+    lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'DELETE', urlForAccount);
+
+    function urlForAccount() {
+      return '/api/accounts2/' + this.accountWithReplaceOnPUTfalse.id;
+    }
+    function urlForReplaceAccountPOST() {
+      return '/api/accounts2/' + this.accountWithReplaceOnPUTfalse.id + '/replace';
     }
   });
 });

@@ -74,40 +74,9 @@ describe('remoting - integration', function() {
   });
 
   describe('Model shared classes', function() {
-    function formatReturns(m) {
-      var returns = m.returns;
-      if (!returns || returns.length === 0) {
-        return '';
-      }
-      var type = returns[0].type;
-      return type ? ':' + type : '';
-    }
-
-    function formatMethod(m) {
-      return [
-        m.name,
-        '(',
-        m.accepts.map(function(a) {
-          return a.arg + ':' + a.type;
-        }).join(','),
-        ')',
-        formatReturns(m),
-        ' ',
-        m.getHttpMethod(),
-        ' ',
-        m.getFullPath(),
-      ].join('');
-    }
-
-    function findClass(name) {
-      return app.handler('rest').adapter
-        .getClasses()
-        .filter(function(c) {
-          return c.name === name;
-        })[0];
-    }
-
-    it('has expected remote methods', function() {
+    it('has expected remote methods with default model.settings.replaceOnPUT' +
+      'set to true (3.x)',
+    function() {
       var storeClass = findClass('store');
       var methods = storeClass.methods
         .filter(function(m) {
@@ -119,18 +88,19 @@ describe('remoting - integration', function() {
 
       var expectedMethods = [
         'create(data:object):store POST /stores',
-        'upsert(data:object):store PUT /stores',
+        'upsert(data:object):store PATCH /stores',
+        'replaceOrCreate(data:object):store PUT /stores',
         'exists(id:any):boolean GET /stores/:id/exists',
         'findById(id:any,filter:object):store GET /stores/:id',
+        'replaceById(id:any,data:object):store PUT /stores/:id',
         'find(filter:object):store GET /stores',
         'findOne(filter:object):store GET /stores/findOne',
         'updateAll(where:object,data:object):object POST /stores/update',
         'deleteById(id:any):object DELETE /stores/:id',
         'count(where:object):number GET /stores/count',
-        'prototype.updateAttributes(data:object):store PUT /stores/:id',
+        'prototype.updateAttributes(data:object):store PATCH /stores/:id',
         'createChangeStream(options:object):ReadableStream POST /stores/change-stream',
       ];
-
       // The list of methods is from docs:
       // https://docs.strongloop.com/display/public/LB/Exposing+models+over+REST
       expect(methods).to.include.members(expectedMethods);
@@ -239,5 +209,154 @@ describe('remoting - integration', function() {
         ];
         expect(methods).to.include.members(expectedMethods);
       });
+
+    it('has expected remote methods with model.settings.replaceOnPUT set to true', function() {
+      app.models.store.settings.replaceOnPUT = true;
+      app.models.store.setup();
+      var storeClass = findClass('store');
+      var methods = storeClass.methods
+        .filter(function(m) {
+          return m.name.indexOf('__') === -1;
+        })
+        .map(function(m) {
+          return formatMethod(m);
+        });
+
+      var expectedMethods = [
+        'create(data:object):store POST /stores',
+        'upsert(data:object):store PATCH /stores',
+        'replaceOrCreate(data:object):store PUT /stores',
+        'exists(id:any):boolean GET /stores/:id/exists',
+        'findById(id:any,filter:object):store GET /stores/:id',
+        'replaceById(id:any,data:object):store PUT /stores/:id',
+        'find(filter:object):store GET /stores',
+        'findOne(filter:object):store GET /stores/findOne',
+        'updateAll(where:object,data:object):object POST /stores/update',
+        'deleteById(id:any):object DELETE /stores/:id',
+        'count(where:object):number GET /stores/count',
+        'prototype.updateAttributes(data:object):store PATCH /stores/:id',
+        'createChangeStream(options:object):ReadableStream POST /stores/change-stream',
+      ];
+
+      // TODO: update the doc for list of methods accordingly
+      // https://docs.strongloop.com/display/public/LB/Exposing+models+over+REST
+      expect(methods).to.include.members(expectedMethods);
+    });
   });
 });
+
+describe('With model.settings.replaceOnPUT false' +
+  'set to false', function() {
+  lt.beforeEach.withApp(app);
+  lt.beforeEach.givenModel('storeWithreplaceOnPUTfalse');
+  afterEach(function(done) {
+    this.app.models.storeWithreplaceOnPUTfalse.destroyAll(done);
+  });
+
+  it('should have expected remote methods',
+  function() {
+    var storeClass = findClass('storeWithreplaceOnPUTfalse');
+    var methods = storeClass.methods
+      .filter(function(m) {
+        return m.name.indexOf('__') === -1;
+      })
+      .map(function(m) {
+        return formatMethod(m);
+      });
+
+    var expectedMethods = [
+      'create(data:object):storeWithreplaceOnPUTfalse POST /stores2',
+      'upsert(data:object):storeWithreplaceOnPUTfalse PATCH /stores2',
+//        'upsert(data:object):storeWithreplaceOnPUTfalse PUT /stores2',
+      'replaceOrCreate(data:object):storeWithreplaceOnPUTfalse POST /stores2/replaceOrCreate',
+      'exists(id:any):boolean GET /stores2/:id/exists',
+      'findById(id:any,filter:object):storeWithreplaceOnPUTfalse GET /stores2/:id',
+      'replaceById(id:any,data:object):storeWithreplaceOnPUTfalse POST /stores2/:id/replace',
+      'find(filter:object):storeWithreplaceOnPUTfalse GET /stores2',
+      'findOne(filter:object):storeWithreplaceOnPUTfalse GET /stores2/findOne',
+      'updateAll(where:object,data:object):object POST /stores2/update',
+      'deleteById(id:any):object DELETE /stores2/:id',
+      'count(where:object):number GET /stores2/count',
+      'prototype.updateAttributes(data:object):storeWithreplaceOnPUTfalse PATCH /stores2/:id',
+//        'prototype.updateAttributes(data:object):storeWithreplaceOnPUTfalse PUT /stores2/:id',
+      'createChangeStream(options:object):ReadableStream POST /stores2/change-stream',
+    ];
+
+    // The list of methods is from docs:
+    // https://docs.strongloop.com/display/public/LB/Exposing+models+over+REST
+    expect(methods).to.include.members(expectedMethods);
+  });
+});
+
+describe('With model.settings.replaceOnPUT true' +
+  'set to true', function() {
+  lt.beforeEach.withApp(app);
+  lt.beforeEach.givenModel('storeWithReplaceOnPUTtrue');
+  afterEach(function(done) {
+    this.app.models.storeWithReplaceOnPUTtrue.destroyAll(done);
+  });
+
+  it('should have expected remote methods',
+  function() {
+    var storeClass = findClass('storeWithReplaceOnPUTtrue');
+    var methods = storeClass.methods
+      .filter(function(m) {
+        return m.name.indexOf('__') === -1;
+      })
+      .map(function(m) {
+        return formatMethod(m);
+      });
+
+    var expectedMethods = [
+      'create(data:object):storeWithReplaceOnPUTtrue POST /stores3',
+      'upsert(data:object):storeWithReplaceOnPUTtrue PATCH /stores3',
+      'replaceOrCreate(data:object):storeWithReplaceOnPUTtrue PUT /stores3',
+      'exists(id:any):boolean GET /stores3/:id/exists',
+      'findById(id:any,filter:object):storeWithReplaceOnPUTtrue GET /stores3/:id',
+      'replaceById(id:any,data:object):storeWithReplaceOnPUTtrue PUT /stores3/:id',
+      'find(filter:object):storeWithReplaceOnPUTtrue GET /stores3',
+      'findOne(filter:object):storeWithReplaceOnPUTtrue GET /stores3/findOne',
+      'updateAll(where:object,data:object):object POST /stores3/update',
+      'deleteById(id:any):object DELETE /stores3/:id',
+      'count(where:object):number GET /stores3/count',
+      'prototype.updateAttributes(data:object):storeWithReplaceOnPUTtrue PATCH /stores3/:id',
+      'createChangeStream(options:object):ReadableStream POST /stores3/change-stream',
+    ];
+    // The list of methods is from docs:
+    // https://docs.strongloop.com/display/public/LB/Exposing+models+over+REST
+    expect(methods).to.include.members(expectedMethods);
+  });
+});
+
+function formatReturns(m) {
+  var returns = m.returns;
+  if (!returns || returns.length === 0) {
+    return '';
+  }
+  var type = returns[0].type;
+  return type ? ':' + type : '';
+}
+
+function formatMethod(m) {
+  return [
+    m.name,
+    '(',
+    m.accepts.map(function(a) {
+      return a.arg + ':' + a.type;
+    }).join(','),
+    ')',
+    formatReturns(m),
+    ' ',
+    m.getHttpMethod(),
+    ' ',
+    m.getFullPath(),
+  ].join('');
+}
+
+function findClass(name) {
+  return app.handler('rest').adapter
+    .getClasses()
+    .filter(function(c) {
+      return c.name === name;
+    })[0];
+}

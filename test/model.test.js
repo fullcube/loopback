@@ -637,6 +637,8 @@ describe.onServer('Remote Methods', function() {
         'upsert', 'updateOrCreate',
         'exists',
         'findById',
+        'replaceById',
+        'replaceOrCreate',
         'find',
         'findOne',
         'updateAll', 'update',

@@ -1,6 +1,6 @@
 {
   "name": "storeWithReplaceOnPUTfalse",
-  "plural": "stores2",
+  "plural": "stores-updating",
   "properties": {},
   "scopes": {
     "superStores": {

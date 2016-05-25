@@ -272,21 +272,21 @@ describe('With model.settings.replaceOnPUT false' +
       });
 
     var expectedMethods = [
-      'create(data:object):storeWithReplaceOnPUTfalse POST /stores2',
-      'upsert(data:object):storeWithReplaceOnPUTfalse PATCH /stores2',
+      'create(data:object):storeWithReplaceOnPUTfalse POST /stores-updating',
+      'upsert(data:object):storeWithReplaceOnPUTfalse PATCH /stores-updating',
 //        'upsert(data:object):storeWithReplaceOnPUTfalse PUT /stores2',
-      'replaceOrCreate(data:object):storeWithReplaceOnPUTfalse POST /stores2/replaceOrCreate',
-      'exists(id:any):boolean GET /stores2/:id/exists',
-      'findById(id:any,filter:object):storeWithReplaceOnPUTfalse GET /stores2/:id',
-      'replaceById(id:any,data:object):storeWithReplaceOnPUTfalse POST /stores2/:id/replace',
-      'find(filter:object):storeWithReplaceOnPUTfalse GET /stores2',
-      'findOne(filter:object):storeWithReplaceOnPUTfalse GET /stores2/findOne',
-      'updateAll(where:object,data:object):object POST /stores2/update',
-      'deleteById(id:any):object DELETE /stores2/:id',
-      'count(where:object):number GET /stores2/count',
-      'prototype.updateAttributes(data:object):storeWithReplaceOnPUTfalse PATCH /stores2/:id',
-//        'prototype.updateAttributes(data:object):storeWithReplaceOnPUTfalse PUT /stores2/:id',
-      'createChangeStream(options:object):ReadableStream POST /stores2/change-stream',
+      'replaceOrCreate(data:object):storeWithReplaceOnPUTfalse POST /stores-updating/replaceOrCreate',
+      'exists(id:any):boolean GET /stores-updating/:id/exists',
+      'findById(id:any,filter:object):storeWithReplaceOnPUTfalse GET /stores-updating/:id',
+      'replaceById(id:any,data:object):storeWithReplaceOnPUTfalse POST /stores-updating/:id/replace',
+      'find(filter:object):storeWithReplaceOnPUTfalse GET /stores-updating',
+      'findOne(filter:object):storeWithReplaceOnPUTfalse GET /stores-updating/findOne',
+      'updateAll(where:object,data:object):object POST /stores-updating/update',
+      'deleteById(id:any):object DELETE /stores-updating/:id',
+      'count(where:object):number GET /stores-updating/count',
+      'prototype.updateAttributes(data:object):storeWithReplaceOnPUTfalse PATCH /stores-updating/:id',
+//        'prototype.updateAttributes(data:object):storeWithReplaceOnPUTfalse PUT /stores-updating/:id',
+      'createChangeStream(options:object):ReadableStream POST /stores-updating/change-stream',
     ];
 
     // The list of methods is from docs:

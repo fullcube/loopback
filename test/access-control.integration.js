@@ -243,33 +243,7 @@ describe('access control - integration', function() {
   });
 
   describe('/accounts with replaceOnPUT false', function() {
-    var count = 0;
-    before(function() {
-      var roleModel = loopback.getModelByType(loopback.Role);
-      roleModel.registerResolver('$dummy', function(role, context, callback) {
-        process.nextTick(function() {
-          if (context.remotingContext) {
-            count++;
-          }
-          callback && callback(null, false); // Always true
-        });
-      });
-    });
-
     lt.beforeEach.givenModel('accountWithReplaceOnPUTfalse');
-
-    lt.it.shouldBeDeniedWhenCalledAnonymously('GET', '/api/accounts2');
-    lt.it.shouldBeDeniedWhenCalledUnauthenticated('GET', '/api/accounts2');
-    lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'GET', '/api/accounts2');
-
-    lt.it.shouldBeDeniedWhenCalledAnonymously('GET', urlForAccount);
-    lt.it.shouldBeDeniedWhenCalledUnauthenticated('GET', urlForAccount);
-    lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'GET', urlForAccount);
-
-    lt.it.shouldBeDeniedWhenCalledAnonymously('POST', '/api/accounts2');
-    lt.it.shouldBeDeniedWhenCalledUnauthenticated('POST', '/api/accounts2');
-    lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'POST', '/api/accounts2');
-
     lt.it.shouldBeDeniedWhenCalledAnonymously('POST', urlForReplaceAccountPOST);
     lt.it.shouldBeDeniedWhenCalledUnauthenticated('POST', urlForReplaceAccountPOST);
     lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'POST', urlForReplaceAccountPOST);

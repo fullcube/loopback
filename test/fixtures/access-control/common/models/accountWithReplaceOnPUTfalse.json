@@ -1,6 +1,6 @@
 {
   "name": "accountWithReplaceOnPUTfalse",
-  "plural": "accounts2",
+  "plural": "accounts-updating",
   "relations": {
     "transactions": {
       "model": "transaction",

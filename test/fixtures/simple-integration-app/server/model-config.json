@@ -37,7 +37,7 @@
     "public": true,
     "dataSource": "db"
   },
-  "storeWithreplaceOnPUTfalse": {
+  "storeWithReplaceOnPUTfalse": {
     "public": true,
     "dataSource": "db"
   },

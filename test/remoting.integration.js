@@ -216,8 +216,6 @@ describe('remoting - integration', function() {
       });
 
     it('has expected remote methods with model.settings.replaceOnPUT set to true', function() {
-      app.models.store.settings.replaceOnPUT = true;
-      app.models.store.setup();
       var storeClass = findClass('store');
       var methods = storeClass.methods
         .filter(function(m) {
@@ -257,14 +255,14 @@ describe('remoting - integration', function() {
 describe('With model.settings.replaceOnPUT false' +
   'set to false', function() {
   lt.beforeEach.withApp(app);
-  lt.beforeEach.givenModel('storeWithreplaceOnPUTfalse');
+  lt.beforeEach.givenModel('storeWithReplaceOnPUTfalse');
   afterEach(function(done) {
-    this.app.models.storeWithreplaceOnPUTfalse.destroyAll(done);
+    this.app.models.storeWithReplaceOnPUTfalse.destroyAll(done);
   });
 
   it('should have expected remote methods',
   function() {
-    var storeClass = findClass('storeWithreplaceOnPUTfalse');
+    var storeClass = findClass('storeWithReplaceOnPUTfalse');
     var methods = storeClass.methods
       .filter(function(m) {
         return m.name.indexOf('__') === -1;
@@ -274,20 +272,20 @@ describe('With model.settings.replaceOnPUT false' +
       });
 
     var expectedMethods = [
-      'create(data:object):storeWithreplaceOnPUTfalse POST /stores2',
-      'upsert(data:object):storeWithreplaceOnPUTfalse PATCH /stores2',
-//        'upsert(data:object):storeWithreplaceOnPUTfalse PUT /stores2',
-      'replaceOrCreate(data:object):storeWithreplaceOnPUTfalse POST /stores2/replaceOrCreate',
+      'create(data:object):storeWithReplaceOnPUTfalse POST /stores2',
+      'upsert(data:object):storeWithReplaceOnPUTfalse PATCH /stores2',
+//        'upsert(data:object):storeWithReplaceOnPUTfalse PUT /stores2',
+      'replaceOrCreate(data:object):storeWithReplaceOnPUTfalse POST /stores2/replaceOrCreate',
       'exists(id:any):boolean GET /stores2/:id/exists',
-      'findById(id:any,filter:object):storeWithreplaceOnPUTfalse GET /stores2/:id',
-      'replaceById(id:any,data:object):storeWithreplaceOnPUTfalse POST /stores2/:id/replace',
-      'find(filter:object):storeWithreplaceOnPUTfalse GET /stores2',
-      'findOne(filter:object):storeWithreplaceOnPUTfalse GET /stores2/findOne',
+      'findById(id:any,filter:object):storeWithReplaceOnPUTfalse GET /stores2/:id',
+      'replaceById(id:any,data:object):storeWithReplaceOnPUTfalse POST /stores2/:id/replace',
+      'find(filter:object):storeWithReplaceOnPUTfalse GET /stores2',
+      'findOne(filter:object):storeWithReplaceOnPUTfalse GET /stores2/findOne',
       'updateAll(where:object,data:object):object POST /stores2/update',
       'deleteById(id:any):object DELETE /stores2/:id',
       'count(where:object):number GET /stores2/count',
-      'prototype.updateAttributes(data:object):storeWithreplaceOnPUTfalse PATCH /stores2/:id',
-//        'prototype.updateAttributes(data:object):storeWithreplaceOnPUTfalse PUT /stores2/:id',
+      'prototype.updateAttributes(data:object):storeWithReplaceOnPUTfalse PATCH /stores2/:id',
+//        'prototype.updateAttributes(data:object):storeWithReplaceOnPUTfalse PUT /stores2/:id',
       'createChangeStream(options:object):ReadableStream POST /stores2/change-stream',
     ];
 

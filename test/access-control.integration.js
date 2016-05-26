@@ -197,6 +197,10 @@ describe('access control - integration', function() {
     lt.it.shouldBeDeniedWhenCalledUnauthenticated('POST', '/api/accounts-replacing');
     lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'POST', '/api/accounts-replacing');
 
+    lt.it.shouldBeDeniedWhenCalledAnonymously('POST', urlForReplaceAccountPOST);
+    lt.it.shouldBeDeniedWhenCalledUnauthenticated('POST', urlForReplaceAccountPOST);
+    lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'POST', urlForReplaceAccountPOST);
+
     lt.it.shouldBeDeniedWhenCalledAnonymously('PUT', urlForAccount);
     lt.it.shouldBeDeniedWhenCalledUnauthenticated('PUT', urlForAccount);
     lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'PUT', urlForAccount);
@@ -231,6 +235,22 @@ describe('access control - integration', function() {
       lt.describe.whenCalledRemotely('DELETE', '/api/accounts-replacing/:id', function() {
         lt.it.shouldBeDenied();
       });
+      describe('replace on POST verb', function() {
+        beforeEach(function(done) {
+          var self = this;
+          // Create an account under the given user
+          app.models.accountWithReplaceOnPUTtrue.create({
+            userId: self.user.id,
+            balance: 100,
+          }, function(err, act) {
+            self.url = '/api/accounts-replacing/' + act.id + '/replace';
+            done();
+          });
+        });
+        lt.describe.whenCalledRemotely('POST', '/api/accounts-replacing/:id/replace', function() {
+          lt.it.shouldBeAllowed();
+        });
+      });
     });
 
     lt.it.shouldBeDeniedWhenCalledAnonymously('DELETE', urlForAccount);
@@ -240,6 +260,9 @@ describe('access control - integration', function() {
     function urlForAccount() {
       return '/api/accounts-replacing/' + this.accountWithReplaceOnPUTtrue.id;
     }
+    function urlForReplaceAccountPOST() {
+      return '/api/accounts-replacing/' + this.accountWithReplaceOnPUTtrue.id + '/replace';
+    }
   });
 
   describe('/accounts with replaceOnPUT false', function() {
@@ -247,6 +270,10 @@ describe('access control - integration', function() {
     lt.it.shouldBeDeniedWhenCalledAnonymously('POST', urlForReplaceAccountPOST);
     lt.it.shouldBeDeniedWhenCalledUnauthenticated('POST', urlForReplaceAccountPOST);
     lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'POST', urlForReplaceAccountPOST);
+
+    lt.it.shouldBeDeniedWhenCalledAnonymously('PUT', urlForAccount);
+    lt.it.shouldBeDeniedWhenCalledUnauthenticated('PUT', urlForAccount);
+    lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'PUT', urlForAccount);
 
     lt.it.shouldBeDeniedWhenCalledAnonymously('PATCH', urlForAccount);
     lt.it.shouldBeDeniedWhenCalledUnauthenticated('PATCH', urlForAccount);

@@ -280,6 +280,7 @@ describe('access control - integration', function() {
     lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'PATCH', urlForAccount);
 
     lt.describe.whenLoggedInAsUser(CURRENT_USER, function() {
+      var actId;
       beforeEach(function(done) {
         var self = this;
         // Create an account under the given user
@@ -288,7 +289,7 @@ describe('access control - integration', function() {
           balance: 100,
         }, function(err, act) {
           self.url = '/api/accounts-updating/' + act.id;
-
+          actId = act.id;
           done();
         });
       });
@@ -309,15 +310,8 @@ describe('access control - integration', function() {
 
       describe('replace on POST verb', function() {
         beforeEach(function(done) {
-          var self = this;
-          // Create an account under the given user
-          app.models.accountWithReplaceOnPUTfalse.create({
-            userId: self.user.id,
-            balance: 100,
-          }, function(err, act) {
-            self.url = '/api/accounts-updating/' + act.id + '/replace';
-            done();
-          });
+          this.url = '/api/accounts-updating/' + actId + '/replace';
+          done();
         });
         lt.describe.whenCalledRemotely('POST', '/api/accounts-updating/:id/replace', function() {
           lt.it.shouldBeAllowed();

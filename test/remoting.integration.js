@@ -73,33 +73,13 @@ describe('remoting - integration', function() {
     });
   });
 
-  function getMethods(methods) {
-    return result = methods.filter(function(m) {
-      return m.name.indexOf('__') === -1;
-    })
-    .map(function(m) {
-      return formatMethod(m);
-    })
-    .reduce(function(p, c) {
-      return p.concat(c);
-    });
-  }
-
   describe('Model shared classes', function() {
     it('has expected remote methods with default model.settings.replaceOnPUT' +
       'set to true (3.x)',
     function() {
       var storeClass = findClass('store');
-      var methods = storeClass.methods
-      .filter(function(m) {
-        return m.name.indexOf('__') === -1;
-      })
-      .map(function(m) {
-        return formatMethod(m);
-      })
-      .reduce(function(p, c) {
-        return p.concat(c);
-      });
+      var methods = getMethods(storeClass.methods);
+
       // TODO: there is a bug in `strong-remoting which does not support multiple
       // http-methods and paths; please see:
       // `https://github.com/strongloop/strong-remoting/blob/ac3093dcfbb787977ca0229b0f672703859e52e1/lib/rest-adapter.js#L622-L631
@@ -128,17 +108,8 @@ describe('remoting - integration', function() {
 
     it('has expected remote methods for scopes', function() {
       var storeClass = findClass('store');
-//      var methods = getMethods(storeClass.methods);
-      var methods = storeClass.methods
-        .filter(function(m) {
-          return m.name.indexOf('__') === 0;
-        })
-        .map(function(m) {
-          return formatMethod(m);
-        })
-        .reduce(function(p, c) {
-          return p.concat(c);
-        });
+      var methods = getScopedMethods(storeClass.methods);
+
       var expectedMethods = [
         '__get__superStores(filter:object):store GET /stores/superStores',
         '__create__superStores(data:store):store POST /stores/superStores',
@@ -152,17 +123,7 @@ describe('remoting - integration', function() {
     it('should have correct signatures for belongsTo methods',
       function() {
         var widgetClass = findClass('widget');
-        var methods = widgetClass.methods
-          .filter(function(m) {
-            return m.name.indexOf('prototype.__') === 0;
-          })
-          .map(function(m) {
-            return formatMethod(m);
-          })
-          .reduce(function(p, c) {
-            return p.concat(c);
-          });
-//        var methods = getMethods(widgetClass.methods);
+        var methods = getPrototypeMethods(widgetClass.methods);
 
         var expectedMethods = [
           'prototype.__get__store(refresh:boolean):store ' +
@@ -175,16 +136,7 @@ describe('remoting - integration', function() {
       function() {
         var physicianClass = findClass('store');
 //        var methods = getMethods(physicianClass.methods);
-        var methods = physicianClass.methods
-          .filter(function(m) {
-            return m.name.indexOf('prototype.__') === 0;
-          })
-          .map(function(m) {
-            return formatMethod(m);
-          })
-          .reduce(function(p, c) {
-            return p.concat(c);
-          });
+        var methods = getPrototypeMethods(physicianClass.methods);
 
         var expectedMethods = [
           'prototype.__findById__widgets(fk:any):widget ' +
@@ -208,17 +160,7 @@ describe('remoting - integration', function() {
     it('should have correct signatures for hasMany-through methods',
       function() { // jscs:disable validateIndentation
         var physicianClass = findClass('physician');
-//        var methods = getMethods(physicianClass.methods);
-        var methods = physicianClass.methods
-        .filter(function(m) {
-          return m.name.indexOf('prototype.__') === 0;
-        })
-        .map(function(m) {
-          return formatMethod(m);
-        })
-        .reduce(function(p, c) {
-          return p.concat(c);
-        });
+        var methods = getPrototypeMethods(physicianClass.methods);
 
         var expectedMethods = [
           'prototype.__findById__patients(fk:any):patient ' +
@@ -247,17 +189,8 @@ describe('remoting - integration', function() {
 
     it('has expected remote methods with model.settings.replaceOnPUT set to true', function() {
       var storeClass = findClass('store');
-//      var methods = getMethods(storeClass.methods);
-      var methods = storeClass.methods
-        .filter(function(m) {
-          return m.name.indexOf('__') === -1;
-        })
-        .map(function(m) {
-          return formatMethod(m);
-        })
-        .reduce(function(p, c) {
-          return p.concat(c);
-        });
+      var methods = getMethods(storeClass.methods);
+
       // TODO: there is a bug in `strong-remoting which does not support multiple
       // http-methods and paths; please see:
       // `https://github.com/strongloop/strong-remoting/blob/ac3093dcfbb787977ca0229b0f672703859e52e1/lib/rest-adapter.js#L622-L631
@@ -297,17 +230,7 @@ describe('With model.settings.replaceOnPUT false' +
   it('should have expected remote methods',
   function() {
     var storeClass = findClass('storeWithReplaceOnPUTfalse');
-//    var methods = getMethods(storeClass.methods);
-    var methods = storeClass.methods
-      .filter(function(m) {
-        return m.name.indexOf('__') === -1;
-      })
-      .map(function(m) {
-        return formatMethod(m);
-      })
-      .reduce(function(p, c) {
-        return p.concat(c);
-      });
+    var methods = getMethods(storeClass.methods);
 
     var expectedMethods = [
       'create(data:object):storeWithReplaceOnPUTfalse POST /stores-updating',
@@ -344,17 +267,7 @@ describe('With model.settings.replaceOnPUT true' +
   it('should have expected remote methods',
   function() {
     var storeClass = findClass('storeWithReplaceOnPUTtrue');
-//    var methods = getMethods(storeClass.methods);
-    var methods = storeClass.methods
-      .filter(function(m) {
-        return m.name.indexOf('__') === -1;
-      })
-      .map(function(m) {
-        return formatMethod(m);
-      })
-      .reduce(function(p, c) {
-        return p.concat(c);
-      });
+    var methods = getMethods(storeClass.methods);
 
     // TODO: there is a bug in `strong-remoting which does not support multiple
     // http-methods and paths; please see:
@@ -418,4 +331,40 @@ function findClass(name) {
     .filter(function(c) {
       return c.name === name;
     })[0];
+}
+
+function getMethods(methods) {
+  return result = methods.filter(function(m) {
+    return m.name.indexOf('__') === -1;
+  })
+  .map(function(m) {
+    return formatMethod(m);
+  })
+  .reduce(function(p, c) {
+    return p.concat(c);
+  });
+}
+
+function getScopedMethods(methods) {
+  return result = methods.filter(function(m) {
+    return m.name.indexOf('__') === 0;
+  })
+  .map(function(m) {
+    return formatMethod(m);
+  })
+  .reduce(function(p, c) {
+    return p.concat(c);
+  });
+}
+
+function getPrototypeMethods(methods) {
+  return result = methods.filter(function(m) {
+    return m.name.indexOf('prototype.__') === 0;
+  })
+  .map(function(m) {
+    return formatMethod(m);
+  })
+  .reduce(function(p, c) {
+    return p.concat(c);
+  });
 }

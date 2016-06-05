@@ -210,6 +210,7 @@ describe('access control - integration', function() {
     lt.it.shouldBeDeniedWhenCalledByUser(CURRENT_USER, 'PATCH', urlForAccount);
 
     lt.describe.whenLoggedInAsUser(CURRENT_USER, function() {
+      var actId;
       beforeEach(function(done) {
         var self = this;
         // Create an account under the given user
@@ -217,8 +218,8 @@ describe('access control - integration', function() {
           userId: self.user.id,
           balance: 100,
         }, function(err, act) {
-          self.url = '/api/accounts-replacing/' + act.id;
-
+          actId = act.id;
+          self.url = '/api/accounts-replacing/' + actId;
           done();
         });
       });
@@ -237,15 +238,8 @@ describe('access control - integration', function() {
       });
       describe('replace on POST verb', function() {
         beforeEach(function(done) {
-          var self = this;
-          // Create an account under the given user
-          app.models.accountWithReplaceOnPUTtrue.create({
-            userId: self.user.id,
-            balance: 100,
-          }, function(err, act) {
-            self.url = '/api/accounts-replacing/' + act.id + '/replace';
-            done();
-          });
+          this.url = '/api/accounts-replacing/' + actId + '/replace';
+          done();
         });
         lt.describe.whenCalledRemotely('POST', '/api/accounts-replacing/:id/replace', function() {
           lt.it.shouldBeAllowed();
@@ -288,8 +282,8 @@ describe('access control - integration', function() {
           userId: self.user.id,
           balance: 100,
         }, function(err, act) {
-          self.url = '/api/accounts-updating/' + act.id;
           actId = act.id;
+          self.url = '/api/accounts-updating/' + actId;
           done();
         });
       });

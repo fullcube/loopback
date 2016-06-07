@@ -1,0 +1,587 @@
+{
+  "Gruntfile.js": {
+    "11": [
+      "grunt-mocha-test"
+    ],
+    "16": [
+      "package.json"
+    ],
+    "215": [
+      "grunt-browserify"
+    ],
+    "216": [
+      "grunt-contrib-uglify"
+    ],
+    "217": [
+      "grunt-eslint"
+    ],
+    "218": [
+      "grunt-contrib-watch"
+    ],
+    "219": [
+      "grunt-karma"
+    ],
+    "221": [
+      "e2e-server"
+    ],
+    "230": [
+      "e2e"
+    ],
+    "233": [
+      "default"
+    ],
+    "235": [
+      "test"
+    ],
+    "241": [
+      "mocha-and-karma"
+    ]
+  },
+  "browser/current-context.js": {
+    "18": [
+      "3b46d3a780fd6ae5f95ade489a0efffe"
+    ]
+  },
+  "common/models/access-token.js": {
+    "77": [
+      "before save"
+    ],
+    "119": [
+      "7e0fca41d098607e1c9aa353c67e0fa1"
+    ],
+    "205": [
+      "Bearer "
+    ],
+    "209": [
+      "utf8"
+    ]
+  },
+  "common/models/application.js": {
+    "89": [
+      "before save"
+    ],
+    "100": [
+      "id"
+    ],
+    "102": [
+      "client"
+    ],
+    "103": [
+      "javaScript"
+    ],
+    "104": [
+      "restApi"
+    ],
+    "105": [
+      "windows"
+    ],
+    "106": [
+      "master"
+    ],
+    "145": [
+      "client"
+    ],
+    "146": [
+      "javaScript"
+    ],
+    "147": [
+      "restApi"
+    ],
+    "148": [
+      "windows"
+    ],
+    "149": [
+      "master"
+    ]
+  },
+  "common/models/acl.js": {
+    "256": [
+      "The following ACLs were searched: "
+    ],
+    "259": [
+      "with score:"
+    ],
+    "350": [
+      "Permission denied by statically resolved permission"
+    ],
+    "351": [
+      " Resolved Permission: %j"
+    ],
+    "378": [
+      "---ACL---"
+    ],
+    "379": [
+      "model %s"
+    ],
+    "380": [
+      "property %s"
+    ],
+    "381": [
+      "principalType %s"
+    ],
+    "382": [
+      "principalId %s"
+    ],
+    "383": [
+      "accessType %s"
+    ],
+    "384": [
+      "permission %s"
+    ],
+    "474": [
+      "---Resolved---"
+    ],
+    "544": [
+      "fd25292a3d3c86f0ae63458b7db6e79b"
+    ],
+    "567": [
+      "ROLE"
+    ]
+  },
+  "lib/access-context.js": {
+    "163": [
+      "---AccessContext---"
+    ],
+    "165": [
+      "principals:"
+    ],
+    "167": [
+      "principal: %j"
+    ],
+    "170": [
+      "principals: %j"
+    ],
+    "172": [
+      "modelName %s"
+    ],
+    "173": [
+      "modelId %s"
+    ],
+    "174": [
+      "property %s"
+    ],
+    "175": [
+      "method %s"
+    ],
+    "176": [
+      "accessType %s"
+    ],
+    "178": [
+      "accessToken:"
+    ],
+    "179": [
+      "  id %j"
+    ],
+    "180": [
+      "  ttl %j"
+    ],
+    "182": [
+      "getUserId() %s"
+    ],
+    "183": [
+      "isAuthenticated() %s"
+    ],
+    "295": [
+      "---AccessRequest---"
+    ],
+    "296": [
+      " model %s"
+    ],
+    "297": [
+      " property %s"
+    ],
+    "298": [
+      " accessType %s"
+    ],
+    "299": [
+      " permission %s"
+    ],
+    "300": [
+      " isWildcard() %s"
+    ],
+    "301": [
+      " isAllowed() %s"
+    ]
+  },
+  "common/models/change.js": {
+    "118": [
+      "c2b5d51f007178170ca3952d59640ca4"
+    ],
+    "167": [
+      "creating change"
+    ],
+    "186": [
+      "rectify change"
+    ],
+    "195": [
+      "rev and prev are equal (not updating anything)"
+    ],
+    "214": [
+      "ASSERTION FAILED: Change currentRev==rev "
+    ],
+    "215": [
+      "should have been already handled"
+    ],
+    "219": [
+      "updated revision (was "
+    ],
+    "223": [
+      "updated prev"
+    ],
+    "228": [
+      "updated revision (was "
+    ],
+    "234": [
+      "ERROR - could not determing prev"
+    ],
+    "237": [
+      "updated prev"
+    ],
+    "242": [
+      "update checkpoint to"
+    ],
+    "444": [
+      "remote conflict"
+    ],
+    "445": [
+      "local conflict"
+    ],
+    "448": [
+      "remote delta"
+    ],
+    "485": [
+      "rectify all"
+    ],
+    "507": [
+      "checkpoint"
+    ],
+    "520": [
+      "\tid"
+    ],
+    "521": [
+      "\trev"
+    ],
+    "522": [
+      "\tprev"
+    ],
+    "523": [
+      "\tcheckpoint"
+    ],
+    "524": [
+      "\tmodelName"
+    ],
+    "525": [
+      "\tmodelId"
+    ],
+    "526": [
+      "\ttype"
+    ]
+  },
+  "common/models/email.js": {
+    "51": [
+      "b2aa64e3b5aa234388d0b457f3ba995a"
+    ],
+    "58": [
+      "b2aa64e3b5aa234388d0b457f3ba995a"
+    ]
+  },
+  "common/models/role.js": {
+    "45": [
+      "dataSourceAttached"
+    ],
+    "183": [
+      "isOwner(): %s %s userId: %s"
+    ],
+    "202": [
+      "Model not found for id %j"
+    ],
+    "206": [
+      "Model found: %j"
+    ],
+    "217": [
+      "Checking relation %s to %s: %j"
+    ],
+    "222": [
+      "No matching belongsTo relation found for model %j and user: %j"
+    ],
+    "228": [
+      "User found: %j"
+    ],
+    "290": [
+      "isInRole(): %s"
+    ],
+    "295": [
+      "Custom resolver found for role %s"
+    ],
+    "308": [
+      "isInRole() returns: false"
+    ],
+    "324": [
+      "isInRole() returns: %j"
+    ],
+    "341": [
+      "Role found: %j"
+    ],
+    "358": [
+      "Role mapping found: %j"
+    ],
+    "367": [
+      "isInRole() returns: %j"
+    ],
+    "401": [
+      "In role %j: %j"
+    ],
+    "433": [
+      "Role mappings found: %s %j"
+    ],
+    "448": [
+      "getRoles() returns: %j %j"
+    ],
+    "453": [
+      "name"
+    ]
+  },
+  "example/client-server/client.js": {
+    "24": [
+      "b3ebc57e196a4e1f0076a284b85879db"
+    ]
+  },
+  "example/client-server/models.js": {
+    "8": [
+      "CartItem"
+    ],
+    "30": [
+      "sum"
+    ]
+  },
+  "example/colors/app.js": {
+    "20": [
+      "color"
+    ],
+    "22": [
+      "db"
+    ],
+    "30": [
+      "e282e0e36e9f10a77c23a91e1fc70122"
+    ]
+  },
+  "example/simple-data-source/app.js": {
+    "17": [
+      "db"
+    ],
+    "19": [
+      "color"
+    ],
+    "33": [
+      "e282e0e36e9f10a77c23a91e1fc70122"
+    ]
+  },
+  "example/context/app.js": {
+    "20": [
+      "host"
+    ],
+    "26": [
+      "color"
+    ],
+    "27": [
+      "**"
+    ],
+    "30": [
+      "f687e565ffae5b1a6171c78e59e3dd49",
+      "host"
+    ],
+    "34": [
+      "db"
+    ],
+    "38": [
+      "29c747de0ac234fd927a30f3e6a34160"
+    ]
+  },
+  "example/replication/app.js": {
+    "8": [
+      "db"
+    ],
+    "9": [
+      "color"
+    ],
+    "10": [
+      "color2"
+    ],
+    "129": [
+      " -"
+    ]
+  },
+  "example/mobile-models/app.js": {
+    "18": [
+      "db"
+    ],
+    "45": [
+      "727d7a28a5b49fc4d9b57a591700f9a8"
+    ],
+    "49": [
+      "7d5e7ed0efaedf3f55f380caae0df8b8",
+      "rfeng"
+    ]
+  },
+  "lib/registry.js": {
+    "119": [
+      "554aa06e92e4722d48ce614618b90c2f"
+    ],
+    "193": [
+      "3438fab56cc7ab92dfd88f0497e523e0"
+    ],
+    "204": [
+      "779467f467862836e19f494a37d6ab77"
+    ],
+    "221": [
+      "83cbdc2560ba9f09155ccfc63e08f1a1"
+    ],
+    "226": [
+      "734a7bebb65e10899935126ba63dd51f"
+    ],
+    "237": [
+      "Attached model `%s` to dataSource `%s`"
+    ],
+    "240": [
+      "Model `%s` is not attached to any DataSource by configuration."
+    ],
+    "243": [
+      "Model `%s` is not attached to any DataSource, possibly by a mistake."
+    ],
+    "245": [
+      "7bc61dadccf417e30b02179665a7ba11"
+    ],
+    "258": [
+      "dc568bee32deb0f6eaf63e73b20e8ceb"
+    ],
+    "272": [
+      "5a66ddbf867d065d0637c3dbc40736a0"
+    ],
+    "276": [
+      "b8729412816c4d96f33b7992db3298d7"
+    ],
+    "309": [
+      "80a32e80cbed65eba2103201a7c94710"
+    ],
+    "361": [
+      "db"
+    ],
+    "375": [
+      "e7e4af32e979cddc901463fc7b362567"
+    ]
+  },
+  "lib/connectors/base-connector.js": {
+    "33": [
+      "created with options"
+    ]
+  },
+  "lib/connectors/mail.js": {
+    "156": [
+      "4a4f04a4e480fc5d4ee73b84d9a4b904"
+    ],
+    "158": [
+      "c7c413148c9d58201be31be156014eb9"
+    ],
+    "160": [
+      "f11a36a110d13d0dd7767c217e6e352d"
+    ],
+    "161": [
+      "7671faeb3d0cfb658cb88a68878ab648"
+    ],
+    "162": [
+      "f4c33c6450be6aa184f2afbbcf30a301"
+    ],
+    "163": [
+      "427ae75d34d469a94385e4f5ee80dee9"
+    ],
+    "164": [
+      "b8bedf95181d9f9b0e2904dfbc0a08bf"
+    ],
+    "172": [
+      "3d63008ccfb2af1db2142e8cc2716ace"
+    ]
+  },
+  "lib/loopback.js": {
+    "53": [
+      "Model"
+    ],
+    "56": [
+      "PersistedModel"
+    ],
+    "94": [
+      "memory"
+    ],
+    "95": [
+      "remote"
+    ]
+  },
+  "lib/server-app.js": {
+    "85": [
+      "ALL"
+    ],
+    "151": [
+      "routes"
+    ],
+    "196": [
+      "cb6b65cca90372e428100fd21f8b2259"
+    ],
+    "198": [
+      "use %s %s %s"
+    ],
+    "208": [
+      "No matching layer is found for %s %s"
+    ]
+  },
+  "server/current-context.js": {
+    "45": [
+      "loopback"
+    ]
+  },
+  "server/middleware/context.js": {
+    "52": [
+      "http"
+    ]
+  },
+  "server/middleware/rest.js": {
+    "44": [
+      "legacyExplorer"
+    ],
+    "46": [
+      "1162caf5a6b2e991f443670d1ea46bde"
+    ],
+    "50": [
+      "rest"
+    ],
+    "58": [
+      "remoting"
+    ],
+    "69": [
+      "AccessToken"
+    ],
+    "75": [
+      "rest"
+    ]
+  },
+  "server/middleware/token.js": {
+    "28": [
+      "(/|$|\\?)"
+    ],
+    "31": [
+      "req.url has been rewritten from %s to %s"
+    ],
+    "83": [
+      "Set currentUserLiteral to 'me' as the value is not a string."
+    ],
+    "102": [
+      "AccessToken"
+    ],
+    "128": [
+      "accessToken"
+    ]
+  },
+  "server/middleware/url-not-found.js": {
+    "20": [
+      "Cannot "
+    ]
+  }
+}

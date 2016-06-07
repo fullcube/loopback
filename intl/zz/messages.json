@@ -1,0 +1,491 @@
+{
+  "default": [
+    "Gruntfile.js:233"
+  ],
+  "e2e": [
+    "Gruntfile.js:230"
+  ],
+  "e2e-server": [
+    "Gruntfile.js:221"
+  ],
+  "grunt-browserify": [
+    "Gruntfile.js:215"
+  ],
+  "grunt-contrib-uglify": [
+    "Gruntfile.js:216"
+  ],
+  "grunt-contrib-watch": [
+    "Gruntfile.js:218"
+  ],
+  "grunt-eslint": [
+    "Gruntfile.js:217"
+  ],
+  "grunt-karma": [
+    "Gruntfile.js:219"
+  ],
+  "grunt-mocha-test": [
+    "Gruntfile.js:11"
+  ],
+  "mocha-and-karma": [
+    "Gruntfile.js:241"
+  ],
+  "package.json": [
+    "Gruntfile.js:16"
+  ],
+  "test": [
+    "Gruntfile.js:235"
+  ],
+  "3b46d3a780fd6ae5f95ade489a0efffe": [
+    "browser/current-context.js:18"
+  ],
+  "7e0fca41d098607e1c9aa353c67e0fa1": [
+    "common/models/access-token.js:119"
+  ],
+  "Bearer ": [
+    "common/models/access-token.js:205"
+  ],
+  "before save": [
+    "common/models/access-token.js:77",
+    "common/models/application.js:89"
+  ],
+  "utf8": [
+    "common/models/access-token.js:209"
+  ],
+  "fd25292a3d3c86f0ae63458b7db6e79b": [
+    "common/models/acl.js:544"
+  ],
+  " Resolved Permission: %j": [
+    "common/models/acl.js:351"
+  ],
+  "---ACL---": [
+    "common/models/acl.js:378"
+  ],
+  "---Resolved---": [
+    "common/models/acl.js:474"
+  ],
+  "Permission denied by statically resolved permission": [
+    "common/models/acl.js:350"
+  ],
+  "ROLE": [
+    "common/models/acl.js:567"
+  ],
+  "The following ACLs were searched: ": [
+    "common/models/acl.js:256"
+  ],
+  "accessType %s": [
+    "common/models/acl.js:383",
+    "lib/access-context.js:176"
+  ],
+  "model %s": [
+    "common/models/acl.js:379"
+  ],
+  "permission %s": [
+    "common/models/acl.js:384"
+  ],
+  "principalId %s": [
+    "common/models/acl.js:382"
+  ],
+  "principalType %s": [
+    "common/models/acl.js:381"
+  ],
+  "property %s": [
+    "common/models/acl.js:380",
+    "lib/access-context.js:174"
+  ],
+  "with score:": [
+    "common/models/acl.js:259"
+  ],
+  "client": [
+    "common/models/application.js:102",
+    "common/models/application.js:145"
+  ],
+  "id": [
+    "common/models/application.js:100"
+  ],
+  "javaScript": [
+    "common/models/application.js:103",
+    "common/models/application.js:146"
+  ],
+  "master": [
+    "common/models/application.js:106",
+    "common/models/application.js:149"
+  ],
+  "restApi": [
+    "common/models/application.js:104",
+    "common/models/application.js:147"
+  ],
+  "windows": [
+    "common/models/application.js:105",
+    "common/models/application.js:148"
+  ],
+  "c2b5d51f007178170ca3952d59640ca4": [
+    "common/models/change.js:118"
+  ],
+  "\tcheckpoint": [
+    "common/models/change.js:523"
+  ],
+  "\tid": [
+    "common/models/change.js:520"
+  ],
+  "\tmodelId": [
+    "common/models/change.js:525"
+  ],
+  "\tmodelName": [
+    "common/models/change.js:524"
+  ],
+  "\tprev": [
+    "common/models/change.js:522"
+  ],
+  "\trev": [
+    "common/models/change.js:521"
+  ],
+  "\ttype": [
+    "common/models/change.js:526"
+  ],
+  "ASSERTION FAILED: Change currentRev==rev ": [
+    "common/models/change.js:214"
+  ],
+  "ERROR - could not determing prev": [
+    "common/models/change.js:234"
+  ],
+  "checkpoint": [
+    "common/models/change.js:507"
+  ],
+  "creating change": [
+    "common/models/change.js:167"
+  ],
+  "local conflict": [
+    "common/models/change.js:445"
+  ],
+  "rectify all": [
+    "common/models/change.js:485"
+  ],
+  "rectify change": [
+    "common/models/change.js:186"
+  ],
+  "remote conflict": [
+    "common/models/change.js:444"
+  ],
+  "remote delta": [
+    "common/models/change.js:448"
+  ],
+  "rev and prev are equal (not updating anything)": [
+    "common/models/change.js:195"
+  ],
+  "should have been already handled": [
+    "common/models/change.js:215"
+  ],
+  "update checkpoint to": [
+    "common/models/change.js:242"
+  ],
+  "updated prev": [
+    "common/models/change.js:223",
+    "common/models/change.js:237"
+  ],
+  "updated revision (was ": [
+    "common/models/change.js:219",
+    "common/models/change.js:228"
+  ],
+  "b2aa64e3b5aa234388d0b457f3ba995a": [
+    "common/models/email.js:51",
+    "common/models/email.js:58"
+  ],
+  "Checking relation %s to %s: %j": [
+    "common/models/role.js:217"
+  ],
+  "Custom resolver found for role %s": [
+    "common/models/role.js:295"
+  ],
+  "In role %j: %j": [
+    "common/models/role.js:401"
+  ],
+  "Model found: %j": [
+    "common/models/role.js:206"
+  ],
+  "Model not found for id %j": [
+    "common/models/role.js:202"
+  ],
+  "No matching belongsTo relation found for model %j and user: %j": [
+    "common/models/role.js:222"
+  ],
+  "Role found: %j": [
+    "common/models/role.js:341"
+  ],
+  "Role mapping found: %j": [
+    "common/models/role.js:358"
+  ],
+  "Role mappings found: %s %j": [
+    "common/models/role.js:433"
+  ],
+  "User found: %j": [
+    "common/models/role.js:228"
+  ],
+  "dataSourceAttached": [
+    "common/models/role.js:45"
+  ],
+  "getRoles() returns: %j %j": [
+    "common/models/role.js:448"
+  ],
+  "isInRole() returns: %j": [
+    "common/models/role.js:324",
+    "common/models/role.js:367"
+  ],
+  "isInRole() returns: false": [
+    "common/models/role.js:308"
+  ],
+  "isInRole(): %s": [
+    "common/models/role.js:290"
+  ],
+  "isOwner(): %s %s userId: %s": [
+    "common/models/role.js:183"
+  ],
+  "name": [
+    "common/models/role.js:453"
+  ],
+  "b3ebc57e196a4e1f0076a284b85879db": [
+    "example/client-server/client.js:24"
+  ],
+  "CartItem": [
+    "example/client-server/models.js:8"
+  ],
+  "sum": [
+    "example/client-server/models.js:30"
+  ],
+  "e282e0e36e9f10a77c23a91e1fc70122": [
+    "example/colors/app.js:30",
+    "example/simple-data-source/app.js:33"
+  ],
+  "color": [
+    "example/colors/app.js:20",
+    "example/context/app.js:26",
+    "example/replication/app.js:9",
+    "example/simple-data-source/app.js:19"
+  ],
+  "db": [
+    "example/colors/app.js:22",
+    "example/context/app.js:34",
+    "example/mobile-models/app.js:18",
+    "example/replication/app.js:8",
+    "example/simple-data-source/app.js:17",
+    "lib/registry.js:361"
+  ],
+  "29c747de0ac234fd927a30f3e6a34160": [
+    "example/context/app.js:38"
+  ],
+  "f687e565ffae5b1a6171c78e59e3dd49": [
+    "example/context/app.js:30"
+  ],
+  "**": [
+    "example/context/app.js:27"
+  ],
+  "host": [
+    "example/context/app.js:20",
+    "example/context/app.js:30"
+  ],
+  "727d7a28a5b49fc4d9b57a591700f9a8": [
+    "example/mobile-models/app.js:45"
+  ],
+  "7d5e7ed0efaedf3f55f380caae0df8b8": [
+    "example/mobile-models/app.js:49"
+  ],
+  "rfeng": [
+    "example/mobile-models/app.js:49"
+  ],
+  " -": [
+    "example/replication/app.js:129"
+  ],
+  "color2": [
+    "example/replication/app.js:10"
+  ],
+  "  id %j": [
+    "lib/access-context.js:179"
+  ],
+  "  ttl %j": [
+    "lib/access-context.js:180"
+  ],
+  " accessType %s": [
+    "lib/access-context.js:298"
+  ],
+  " isAllowed() %s": [
+    "lib/access-context.js:301"
+  ],
+  " isWildcard() %s": [
+    "lib/access-context.js:300"
+  ],
+  " model %s": [
+    "lib/access-context.js:296"
+  ],
+  " permission %s": [
+    "lib/access-context.js:299"
+  ],
+  " property %s": [
+    "lib/access-context.js:297"
+  ],
+  "---AccessContext---": [
+    "lib/access-context.js:163"
+  ],
+  "---AccessRequest---": [
+    "lib/access-context.js:295"
+  ],
+  "accessToken:": [
+    "lib/access-context.js:178"
+  ],
+  "getUserId() %s": [
+    "lib/access-context.js:182"
+  ],
+  "isAuthenticated() %s": [
+    "lib/access-context.js:183"
+  ],
+  "method %s": [
+    "lib/access-context.js:175"
+  ],
+  "modelId %s": [
+    "lib/access-context.js:173"
+  ],
+  "modelName %s": [
+    "lib/access-context.js:172"
+  ],
+  "principal: %j": [
+    "lib/access-context.js:167"
+  ],
+  "principals:": [
+    "lib/access-context.js:165"
+  ],
+  "principals: %j": [
+    "lib/access-context.js:170"
+  ],
+  "created with options": [
+    "lib/connectors/base-connector.js:33"
+  ],
+  "3d63008ccfb2af1db2142e8cc2716ace": [
+    "lib/connectors/mail.js:172"
+  ],
+  "427ae75d34d469a94385e4f5ee80dee9": [
+    "lib/connectors/mail.js:163"
+  ],
+  "4a4f04a4e480fc5d4ee73b84d9a4b904": [
+    "lib/connectors/mail.js:156"
+  ],
+  "7671faeb3d0cfb658cb88a68878ab648": [
+    "lib/connectors/mail.js:161"
+  ],
+  "b8bedf95181d9f9b0e2904dfbc0a08bf": [
+    "lib/connectors/mail.js:164"
+  ],
+  "c7c413148c9d58201be31be156014eb9": [
+    "lib/connectors/mail.js:158"
+  ],
+  "f11a36a110d13d0dd7767c217e6e352d": [
+    "lib/connectors/mail.js:160"
+  ],
+  "f4c33c6450be6aa184f2afbbcf30a301": [
+    "lib/connectors/mail.js:162"
+  ],
+  "Model": [
+    "lib/loopback.js:53"
+  ],
+  "PersistedModel": [
+    "lib/loopback.js:56"
+  ],
+  "memory": [
+    "lib/loopback.js:94"
+  ],
+  "remote": [
+    "lib/loopback.js:95"
+  ],
+  "3438fab56cc7ab92dfd88f0497e523e0": [
+    "lib/registry.js:193"
+  ],
+  "554aa06e92e4722d48ce614618b90c2f": [
+    "lib/registry.js:119"
+  ],
+  "5a66ddbf867d065d0637c3dbc40736a0": [
+    "lib/registry.js:272"
+  ],
+  "734a7bebb65e10899935126ba63dd51f": [
+    "lib/registry.js:226"
+  ],
+  "779467f467862836e19f494a37d6ab77": [
+    "lib/registry.js:204"
+  ],
+  "7bc61dadccf417e30b02179665a7ba11": [
+    "lib/registry.js:245"
+  ],
+  "80a32e80cbed65eba2103201a7c94710": [
+    "lib/registry.js:309"
+  ],
+  "83cbdc2560ba9f09155ccfc63e08f1a1": [
+    "lib/registry.js:221"
+  ],
+  "b8729412816c4d96f33b7992db3298d7": [
+    "lib/registry.js:276"
+  ],
+  "dc568bee32deb0f6eaf63e73b20e8ceb": [
+    "lib/registry.js:258"
+  ],
+  "e7e4af32e979cddc901463fc7b362567": [
+    "lib/registry.js:375"
+  ],
+  "Attached model `%s` to dataSource `%s`": [
+    "lib/registry.js:237"
+  ],
+  "Model `%s` is not attached to any DataSource by configuration.": [
+    "lib/registry.js:240"
+  ],
+  "Model `%s` is not attached to any DataSource, possibly by a mistake.": [
+    "lib/registry.js:243"
+  ],
+  "cb6b65cca90372e428100fd21f8b2259": [
+    "lib/server-app.js:196"
+  ],
+  "ALL": [
+    "lib/server-app.js:85"
+  ],
+  "No matching layer is found for %s %s": [
+    "lib/server-app.js:208"
+  ],
+  "routes": [
+    "lib/server-app.js:151"
+  ],
+  "use %s %s %s": [
+    "lib/server-app.js:198"
+  ],
+  "loopback": [
+    "server/current-context.js:45"
+  ],
+  "http": [
+    "server/middleware/context.js:52"
+  ],
+  "1162caf5a6b2e991f443670d1ea46bde": [
+    "server/middleware/rest.js:46"
+  ],
+  "AccessToken": [
+    "server/middleware/rest.js:69",
+    "server/middleware/token.js:102"
+  ],
+  "legacyExplorer": [
+    "server/middleware/rest.js:44"
+  ],
+  "remoting": [
+    "server/middleware/rest.js:58"
+  ],
+  "rest": [
+    "server/middleware/rest.js:50",
+    "server/middleware/rest.js:75"
+  ],
+  "(/|$|\\?)": [
+    "server/middleware/token.js:28"
+  ],
+  "Set currentUserLiteral to 'me' as the value is not a string.": [
+    "server/middleware/token.js:83"
+  ],
+  "accessToken": [
+    "server/middleware/token.js:128"
+  ],
+  "req.url has been rewritten from %s to %s": [
+    "server/middleware/token.js:31"
+  ],
+  "Cannot ": [
+    "server/middleware/url-not-found.js:20"
+  ]
+}

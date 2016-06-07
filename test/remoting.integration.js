@@ -97,7 +97,7 @@ describe('remoting - integration', function() {
         'updateAll(where:object,data:object):object POST /stores/update',
         'deleteById(id:any):object DELETE /stores/:id',
         'count(where:object):number GET /stores/count',
-        'prototype.updateAttributes(data:object):store PATCH /stores/:id',
+        'prototype.patchAttributes(data:object):store PATCH /stores/:id',
         'createChangeStream(options:object):ReadableStream POST /stores/change-stream',
       ];
 
@@ -208,7 +208,7 @@ describe('remoting - integration', function() {
         'updateAll(where:object,data:object):object POST /stores/update',
         'deleteById(id:any):object DELETE /stores/:id',
         'count(where:object):number GET /stores/count',
-        'prototype.updateAttributes(data:object):store PATCH /stores/:id',
+        'prototype.patchAttributes(data:object):store PATCH /stores/:id',
         'createChangeStream(options:object):ReadableStream POST /stores/change-stream',
       ];
 
@@ -245,8 +245,8 @@ describe('With model.settings.replaceOnPUT false' +
       'updateAll(where:object,data:object):object POST /stores-updating/update',
       'deleteById(id:any):object DELETE /stores-updating/:id',
       'count(where:object):number GET /stores-updating/count',
-      'prototype.updateAttributes(data:object):storeWithReplaceOnPUTfalse PATCH /stores-updating/:id',
-      'prototype.updateAttributes(data:object):storeWithReplaceOnPUTfalse PUT /stores-updating/:id',
+      'prototype.patchAttributes(data:object):storeWithReplaceOnPUTfalse PATCH /stores-updating/:id',
+      'prototype.patchAttributes(data:object):storeWithReplaceOnPUTfalse PUT /stores-updating/:id',
       'createChangeStream(options:object):ReadableStream POST /stores-updating/change-stream',
     ];
 
@@ -286,7 +286,7 @@ describe('With model.settings.replaceOnPUT true' +
       'updateAll(where:object,data:object):object POST /stores3/update',
       'deleteById(id:any):object DELETE /stores3/:id',
       'count(where:object):number GET /stores3/count',
-      'prototype.updateAttributes(data:object):storeWithReplaceOnPUTtrue PATCH /stores3/:id',
+      'prototype.patchAttributes(data:object):storeWithReplaceOnPUTtrue PATCH /stores3/:id',
       'createChangeStream(options:object):ReadableStream POST /stores3/change-stream',
     ];
     // The list of methods is from docs:

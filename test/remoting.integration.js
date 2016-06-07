@@ -78,11 +78,8 @@ describe('remoting - integration', function() {
       'set to true (3.x)',
     function() {
       var storeClass = findClass('store');
-      var methods = getMethods(storeClass.methods);
+      var methods = getFormattedMethodsExcludingRelations(storeClass.methods);
 
-      // TODO: there is a bug in `strong-remoting which does not support multiple
-      // http-methods and paths; please see:
-      // `https://github.com/strongloop/strong-remoting/blob/ac3093dcfbb787977ca0229b0f672703859e52e1/lib/rest-adapter.js#L622-L631
       var expectedMethods = [
         'create(data:object):store POST /stores',
         'patchOrCreate(data:object):store PATCH /stores',
@@ -108,7 +105,7 @@ describe('remoting - integration', function() {
 
     it('has expected remote methods for scopes', function() {
       var storeClass = findClass('store');
-      var methods = getScopedMethods(storeClass.methods);
+      var methods = getFormattedScopeMethods(storeClass.methods);
 
       var expectedMethods = [
         '__get__superStores(filter:object):store GET /stores/superStores',
@@ -135,7 +132,6 @@ describe('remoting - integration', function() {
     it('should have correct signatures for hasMany methods',
       function() {
         var physicianClass = findClass('store');
-//        var methods = getMethods(physicianClass.methods);
         var methods = getPrototypeMethods(physicianClass.methods);
 
         var expectedMethods = [
@@ -186,41 +182,10 @@ describe('remoting - integration', function() {
         ];
         expect(methods).to.include.members(expectedMethods);
       });
-
-    it('has expected remote methods with model.settings.replaceOnPUT set to true', function() {
-      var storeClass = findClass('store');
-      var methods = getMethods(storeClass.methods);
-
-      // TODO: there is a bug in `strong-remoting which does not support multiple
-      // http-methods and paths; please see:
-      // `https://github.com/strongloop/strong-remoting/blob/ac3093dcfbb787977ca0229b0f672703859e52e1/lib/rest-adapter.js#L622-L631
-      var expectedMethods = [
-        'create(data:object):store POST /stores',
-        'patchOrCreate(data:object):store PATCH /stores',
-        'replaceOrCreate(data:object):store PUT /stores',
-        'replaceOrCreate(data:object):store POST /stores/replaceOrCreate',
-        'exists(id:any):boolean GET /stores/:id/exists',
-        'findById(id:any,filter:object):store GET /stores/:id',
-        'replaceById(id:any,data:object):store PUT /stores/:id',
-        'replaceById(id:any,data:object):store POST /stores/:id/replace',
-        'find(filter:object):store GET /stores',
-        'findOne(filter:object):store GET /stores/findOne',
-        'updateAll(where:object,data:object):object POST /stores/update',
-        'deleteById(id:any):object DELETE /stores/:id',
-        'count(where:object):number GET /stores/count',
-        'prototype.patchAttributes(data:object):store PATCH /stores/:id',
-        'createChangeStream(options:object):ReadableStream POST /stores/change-stream',
-      ];
-
-      // TODO: update the doc for list of methods accordingly
-      // https://docs.strongloop.com/display/public/LB/Exposing+models+over+REST
-      expect(methods).to.include.members(expectedMethods);
-    });
   });
 });
 
-describe('With model.settings.replaceOnPUT false' +
-  'set to false', function() {
+describe('With model.settings.replaceOnPUT false', function() {
   lt.beforeEach.withApp(app);
   lt.beforeEach.givenModel('storeWithReplaceOnPUTfalse');
   afterEach(function(done) {
@@ -230,7 +195,7 @@ describe('With model.settings.replaceOnPUT false' +
   it('should have expected remote methods',
   function() {
     var storeClass = findClass('storeWithReplaceOnPUTfalse');
-    var methods = getMethods(storeClass.methods);
+    var methods = getFormattedMethodsExcludingRelations(storeClass.methods);
 
     var expectedMethods = [
       'create(data:object):storeWithReplaceOnPUTfalse POST /stores-updating',
@@ -256,8 +221,7 @@ describe('With model.settings.replaceOnPUT false' +
   });
 });
 
-describe('With model.settings.replaceOnPUT true' +
-  'set to true', function() {
+describe('With model.settings.replaceOnPUT true', function() {
   lt.beforeEach.withApp(app);
   lt.beforeEach.givenModel('storeWithReplaceOnPUTtrue');
   afterEach(function(done) {
@@ -267,11 +231,8 @@ describe('With model.settings.replaceOnPUT true' +
   it('should have expected remote methods',
   function() {
     var storeClass = findClass('storeWithReplaceOnPUTtrue');
-    var methods = getMethods(storeClass.methods);
+    var methods = getFormattedMethodsExcludingRelations(storeClass.methods);
 
-    // TODO: there is a bug in `strong-remoting which does not support multiple
-    // http-methods and paths; please see:
-    // `https://github.com/strongloop/strong-remoting/blob/ac3093dcfbb787977ca0229b0f672703859e52e1/lib/rest-adapter.js#L622-L631
     var expectedMethods = [
       'create(data:object):storeWithReplaceOnPUTtrue POST /stores-replacing',
       'patchOrCreate(data:object):storeWithReplaceOnPUTtrue PATCH /stores-replacing',
@@ -333,7 +294,7 @@ function findClass(name) {
     })[0];
 }
 
-function getMethods(methods) {
+function getFormattedMethodsExcludingRelations(methods) {
   return result = methods.filter(function(m) {
     return m.name.indexOf('__') === -1;
   })
@@ -345,7 +306,7 @@ function getMethods(methods) {
   });
 }
 
-function getScopedMethods(methods) {
+function getFormattedScopeMethods(methods) {
   return result = methods.filter(function(m) {
     return m.name.indexOf('__') === 0;
   })

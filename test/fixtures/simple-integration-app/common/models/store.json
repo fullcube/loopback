@@ -1,6 +1,5 @@
 {
-  "name": "storeWithReplaceOnPUTtrue",
-  "plural": "stores3",
+  "name": "store",
   "properties": {},
   "scopes": {
     "superStores": {
@@ -14,6 +13,5 @@
       "model": "widget",
       "type": "hasMany"
     }
-  },
-  "replaceOnPUT": true
+  }
 }

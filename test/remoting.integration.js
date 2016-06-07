@@ -273,21 +273,21 @@ describe('With model.settings.replaceOnPUT true' +
     // http-methods and paths; please see:
     // `https://github.com/strongloop/strong-remoting/blob/ac3093dcfbb787977ca0229b0f672703859e52e1/lib/rest-adapter.js#L622-L631
     var expectedMethods = [
-      'create(data:object):storeWithReplaceOnPUTtrue POST /stores3',
-      'patchOrCreate(data:object):storeWithReplaceOnPUTtrue PATCH /stores3',
-      'replaceOrCreate(data:object):storeWithReplaceOnPUTtrue POST /stores3/replaceOrCreate',
-      'replaceOrCreate(data:object):storeWithReplaceOnPUTtrue PUT /stores3',
-      'exists(id:any):boolean GET /stores3/:id/exists',
-      'findById(id:any,filter:object):storeWithReplaceOnPUTtrue GET /stores3/:id',
-      'replaceById(id:any,data:object):storeWithReplaceOnPUTtrue POST /stores3/:id/replace',
-      'replaceById(id:any,data:object):storeWithReplaceOnPUTtrue PUT /stores3/:id',
-      'find(filter:object):storeWithReplaceOnPUTtrue GET /stores3',
-      'findOne(filter:object):storeWithReplaceOnPUTtrue GET /stores3/findOne',
-      'updateAll(where:object,data:object):object POST /stores3/update',
-      'deleteById(id:any):object DELETE /stores3/:id',
-      'count(where:object):number GET /stores3/count',
-      'prototype.patchAttributes(data:object):storeWithReplaceOnPUTtrue PATCH /stores3/:id',
-      'createChangeStream(options:object):ReadableStream POST /stores3/change-stream',
+      'create(data:object):storeWithReplaceOnPUTtrue POST /stores-replacing',
+      'patchOrCreate(data:object):storeWithReplaceOnPUTtrue PATCH /stores-replacing',
+      'replaceOrCreate(data:object):storeWithReplaceOnPUTtrue POST /stores-replacing/replaceOrCreate',
+      'replaceOrCreate(data:object):storeWithReplaceOnPUTtrue PUT /stores-replacing',
+      'exists(id:any):boolean GET /stores-replacing/:id/exists',
+      'findById(id:any,filter:object):storeWithReplaceOnPUTtrue GET /stores-replacing/:id',
+      'replaceById(id:any,data:object):storeWithReplaceOnPUTtrue POST /stores-replacing/:id/replace',
+      'replaceById(id:any,data:object):storeWithReplaceOnPUTtrue PUT /stores-replacing/:id',
+      'find(filter:object):storeWithReplaceOnPUTtrue GET /stores-replacing',
+      'findOne(filter:object):storeWithReplaceOnPUTtrue GET /stores-replacing/findOne',
+      'updateAll(where:object,data:object):object POST /stores-replacing/update',
+      'deleteById(id:any):object DELETE /stores-replacing/:id',
+      'count(where:object):number GET /stores-replacing/count',
+      'prototype.patchAttributes(data:object):storeWithReplaceOnPUTtrue PATCH /stores-replacing/:id',
+      'createChangeStream(options:object):ReadableStream POST /stores-replacing/change-stream',
     ];
     // The list of methods is from docs:
     // https://docs.strongloop.com/display/public/LB/Exposing+models+over+REST

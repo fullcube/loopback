@@ -85,7 +85,7 @@ describe('remoting - integration', function() {
       // `https://github.com/strongloop/strong-remoting/blob/ac3093dcfbb787977ca0229b0f672703859e52e1/lib/rest-adapter.js#L622-L631
       var expectedMethods = [
         'create(data:object):store POST /stores',
-        'upsert(data:object):store PATCH /stores',
+        'patchOrCreate(data:object):store PATCH /stores',
         'replaceOrCreate(data:object):store PUT /stores',
         'replaceOrCreate(data:object):store POST /stores/replaceOrCreate',
         'exists(id:any):boolean GET /stores/:id/exists',
@@ -196,7 +196,7 @@ describe('remoting - integration', function() {
       // `https://github.com/strongloop/strong-remoting/blob/ac3093dcfbb787977ca0229b0f672703859e52e1/lib/rest-adapter.js#L622-L631
       var expectedMethods = [
         'create(data:object):store POST /stores',
-        'upsert(data:object):store PATCH /stores',
+        'patchOrCreate(data:object):store PATCH /stores',
         'replaceOrCreate(data:object):store PUT /stores',
         'replaceOrCreate(data:object):store POST /stores/replaceOrCreate',
         'exists(id:any):boolean GET /stores/:id/exists',
@@ -234,8 +234,8 @@ describe('With model.settings.replaceOnPUT false' +
 
     var expectedMethods = [
       'create(data:object):storeWithReplaceOnPUTfalse POST /stores-updating',
-      'upsert(data:object):storeWithReplaceOnPUTfalse PATCH /stores-updating',
-      'upsert(data:object):storeWithReplaceOnPUTfalse PUT /stores-updating',
+      'patchOrCreate(data:object):storeWithReplaceOnPUTfalse PATCH /stores-updating',
+      'patchOrCreate(data:object):storeWithReplaceOnPUTfalse PUT /stores-updating',
       'replaceOrCreate(data:object):storeWithReplaceOnPUTfalse POST /stores-updating/replaceOrCreate',
       'exists(id:any):boolean GET /stores-updating/:id/exists',
       'findById(id:any,filter:object):storeWithReplaceOnPUTfalse GET /stores-updating/:id',
@@ -274,7 +274,7 @@ describe('With model.settings.replaceOnPUT true' +
     // `https://github.com/strongloop/strong-remoting/blob/ac3093dcfbb787977ca0229b0f672703859e52e1/lib/rest-adapter.js#L622-L631
     var expectedMethods = [
       'create(data:object):storeWithReplaceOnPUTtrue POST /stores3',
-      'upsert(data:object):storeWithReplaceOnPUTtrue PATCH /stores3',
+      'patchOrCreate(data:object):storeWithReplaceOnPUTtrue PATCH /stores3',
       'replaceOrCreate(data:object):storeWithReplaceOnPUTtrue POST /stores3/replaceOrCreate',
       'replaceOrCreate(data:object):storeWithReplaceOnPUTtrue PUT /stores3',
       'exists(id:any):boolean GET /stores3/:id/exists',

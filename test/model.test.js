@@ -634,7 +634,7 @@ describe.onServer('Remote Methods', function() {
         // this test was seeing this method (with all aliases) as public
         // 'destroyAll', 'deleteAll', 'remove',
         'create',
-        'upsert', 'updateOrCreate',
+        'upsert', 'updateOrCreate', 'patchOrCreate',
         'exists',
         'findById',
         'replaceById',

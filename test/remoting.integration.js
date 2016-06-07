@@ -198,21 +198,12 @@ describe('With model.settings.replaceOnPUT false', function() {
     var methods = getFormattedMethodsExcludingRelations(storeClass.methods);
 
     var expectedMethods = [
-      'create(data:object):storeWithReplaceOnPUTfalse POST /stores-updating',
       'patchOrCreate(data:object):storeWithReplaceOnPUTfalse PATCH /stores-updating',
       'patchOrCreate(data:object):storeWithReplaceOnPUTfalse PUT /stores-updating',
       'replaceOrCreate(data:object):storeWithReplaceOnPUTfalse POST /stores-updating/replaceOrCreate',
-      'exists(id:any):boolean GET /stores-updating/:id/exists',
-      'findById(id:any,filter:object):storeWithReplaceOnPUTfalse GET /stores-updating/:id',
       'replaceById(id:any,data:object):storeWithReplaceOnPUTfalse POST /stores-updating/:id/replace',
-      'find(filter:object):storeWithReplaceOnPUTfalse GET /stores-updating',
-      'findOne(filter:object):storeWithReplaceOnPUTfalse GET /stores-updating/findOne',
-      'updateAll(where:object,data:object):object POST /stores-updating/update',
-      'deleteById(id:any):object DELETE /stores-updating/:id',
-      'count(where:object):number GET /stores-updating/count',
       'prototype.patchAttributes(data:object):storeWithReplaceOnPUTfalse PATCH /stores-updating/:id',
       'prototype.patchAttributes(data:object):storeWithReplaceOnPUTfalse PUT /stores-updating/:id',
-      'createChangeStream(options:object):ReadableStream POST /stores-updating/change-stream',
     ];
 
     // The list of methods is from docs:
@@ -234,21 +225,12 @@ describe('With model.settings.replaceOnPUT true', function() {
     var methods = getFormattedMethodsExcludingRelations(storeClass.methods);
 
     var expectedMethods = [
-      'create(data:object):storeWithReplaceOnPUTtrue POST /stores-replacing',
       'patchOrCreate(data:object):storeWithReplaceOnPUTtrue PATCH /stores-replacing',
       'replaceOrCreate(data:object):storeWithReplaceOnPUTtrue POST /stores-replacing/replaceOrCreate',
       'replaceOrCreate(data:object):storeWithReplaceOnPUTtrue PUT /stores-replacing',
-      'exists(id:any):boolean GET /stores-replacing/:id/exists',
-      'findById(id:any,filter:object):storeWithReplaceOnPUTtrue GET /stores-replacing/:id',
       'replaceById(id:any,data:object):storeWithReplaceOnPUTtrue POST /stores-replacing/:id/replace',
       'replaceById(id:any,data:object):storeWithReplaceOnPUTtrue PUT /stores-replacing/:id',
-      'find(filter:object):storeWithReplaceOnPUTtrue GET /stores-replacing',
-      'findOne(filter:object):storeWithReplaceOnPUTtrue GET /stores-replacing/findOne',
-      'updateAll(where:object,data:object):object POST /stores-replacing/update',
-      'deleteById(id:any):object DELETE /stores-replacing/:id',
-      'count(where:object):number GET /stores-replacing/count',
       'prototype.patchAttributes(data:object):storeWithReplaceOnPUTtrue PATCH /stores-replacing/:id',
-      'createChangeStream(options:object):ReadableStream POST /stores-replacing/change-stream',
     ];
     // The list of methods is from docs:
     // https://docs.strongloop.com/display/public/LB/Exposing+models+over+REST

@@ -120,7 +120,7 @@ describe('remoting - integration', function() {
     it('should have correct signatures for belongsTo methods',
       function() {
         var widgetClass = findClass('widget');
-        var methods = getPrototypeMethods(widgetClass.methods);
+        var methods = getFormattedPrototypeMethods(widgetClass.methods);
 
         var expectedMethods = [
           'prototype.__get__store(refresh:boolean):store ' +
@@ -132,7 +132,7 @@ describe('remoting - integration', function() {
     it('should have correct signatures for hasMany methods',
       function() {
         var physicianClass = findClass('store');
-        var methods = getPrototypeMethods(physicianClass.methods);
+        var methods = getFormattedPrototypeMethods(physicianClass.methods);
 
         var expectedMethods = [
           'prototype.__findById__widgets(fk:any):widget ' +
@@ -156,7 +156,7 @@ describe('remoting - integration', function() {
     it('should have correct signatures for hasMany-through methods',
       function() { // jscs:disable validateIndentation
         var physicianClass = findClass('physician');
-        var methods = getPrototypeMethods(physicianClass.methods);
+        var methods = getFormattedPrototypeMethods(physicianClass.methods);
 
         var expectedMethods = [
           'prototype.__findById__patients(fk:any):patient ' +
@@ -300,7 +300,7 @@ function getFormattedScopeMethods(methods) {
   });
 }
 
-function getPrototypeMethods(methods) {
+function getFormattedPrototypeMethods(methods) {
   return result = methods.filter(function(m) {
     return m.name.indexOf('prototype.__') === 0;
   })

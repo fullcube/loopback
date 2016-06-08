@@ -14,5 +14,4 @@ app.use(loopback.token({ model: app.models.accessToken }));
 app.use(apiPath, loopback.rest());
 
 app.use(loopback.urlNotFound());
-app.use(loopback.errorHandler());
 app.enableAuth();

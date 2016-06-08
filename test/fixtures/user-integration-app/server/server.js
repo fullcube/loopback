@@ -12,4 +12,3 @@ app.use(loopback.token({ model: app.models.AccessToken }));
 var apiPath = '/api';
 app.use(apiPath, loopback.rest());
 app.use(loopback.urlNotFound());
-app.use(loopback.errorHandler());

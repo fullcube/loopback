@@ -49,7 +49,7 @@
     "inflection": "^1.6.0",
     "isemail": "^2.2.1",
     "loopback-connector-remote": "^3.0.0",
-    "loopback-datasource-juggler": "^3.0.0",
+    "loopback-datasource-juggler": "https://github.com/fullcube/loopback-datasource-juggler/tarball/22d33b7dfa67c012882be68a03b5b07452136763",
     "loopback-phase": "^3.0.0",
     "nodemailer": "^2.5.0",
     "nodemailer-stub-transport": "^1.0.0",
